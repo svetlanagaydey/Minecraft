@@ -46,19 +46,28 @@ main {
     color: white;
     font-weight: bold;
     width: 100%;
-    font-size: 1.6vw;
+    font-size: 1.4vw;
 }
 .inverting {
     width: 4vw;
     height: 7vh;
 }
-.playItem {
+.playItem,
+.stone,
+.dirt,
+.grass,
+.leaves,
+.cloud
+ {
     width: 4vw;
     height: 4.75vh;
+}
+.playItem {
     background-color: aqua;
     border: solid 1px green;
 }
 .stone {
+   
     background: url(../images/Cobblestone.png);
 }
 .dirt {
@@ -66,6 +75,7 @@ main {
 }
 .grass {
     background: url(../images/Grass.png);
+   
 }
 .leaves {
     background: url(../images/Leaves.png);
@@ -73,4 +83,6 @@ main {
 .cloud {
     background: white;
 }
-
+.oak {
+    background: url(../images/Oak-Log.png);
+}

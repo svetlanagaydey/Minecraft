@@ -9,12 +9,16 @@ main {
 }
 
 .playGraund {
-    width: 95vw;
+    width: 80vw;
     height: 100vh;
-    background-color: lightgray;
+    background-color: lightgrey;
+    display: grid;
+    grid-template-rows: repeat(20, 2fr);
+    grid-template-columns: repeat(20, 2fr);
+  
 }
 .aside {
-    width: 15vw;
+    width: 20vw;
     height: 100vh;
     background-color: rgb(45, 44, 44);
     
@@ -48,3 +52,25 @@ main {
     width: 4vw;
     height: 7vh;
 }
+.playItem {
+    width: 4vw;
+    height: 4.75vh;
+    background-color: aqua;
+    border: solid 1px green;
+}
+.stone {
+    background: url(../images/Cobblestone.png);
+}
+.dirt {
+    background: url(../images/Dirt.png);
+}
+.grass {
+    background: url(../images/Grass.png);
+}
+.leaves {
+    background: url(../images/Leaves.png);
+}
+.cloud {
+    background: white;
+}
+

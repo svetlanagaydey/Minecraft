@@ -13,29 +13,71 @@ let user = {
   tool: '',
   inverting: false
 }
+
 const pisckaxe = document.querySelector('#pickaxe');
 const shovel = document.querySelector('#shovel');
 const axe = document.querySelector('#axe');
-
 const invers = document.querySelector('.inverting');
 const inversInnerDiv = document.createElement("div");
-//invers.setAttribute('material', '');
 
 pisckaxe.addEventListener('click', function(){ 
   user.tool = "pickaxe";
   user.inverting = false;
+  pisckaxe.classList.toggle('chousen-instument');
+  if (shovel.classList.contains('chousen-instument')) {
+    shovel.classList.toggle('chousen-instument')
+  }
+  if (axe.classList.contains('chousen-instument')) {
+    axe.classList.toggle('chousen-instument')
+  }
+  if (invers.classList.contains('chousen-inversing')) {
+    invers.classList.toggle('chousen-inversing')
+  }
 })
+
 shovel.addEventListener('click', function(){ 
-  user.tool = "shovel"
+  user.tool = "shovel";
   user.inverting = false;
+  shovel.classList.toggle('chousen-instument');
+  if (pisckaxe.classList.contains('chousen-instument')) {
+    pisckaxe.classList.toggle('chousen-instument')
+  }
+  if (axe.classList.contains('chousen-instument')) {
+    axe.classList.toggle('chousen-instument')
+  }
+  if (invers.classList.contains('chousen-inversing')) {
+    invers.classList.toggle('chousen-inversing')
+  }
 })
+
 axe.addEventListener('click', function(){ 
   user.tool = "axe";
   user.inverting = false;
+  axe.classList.toggle('chousen-instument');
+  if (pisckaxe.classList.contains('chousen-instument')) {
+    pisckaxe.classList.toggle('chousen-instument')
+  }
+  if (shovel.classList.contains('chousen-instument')) {
+    shovel.classList.toggle('chousen-instument')
+  }
+  if (invers.classList.contains('chousen-inversing')) {
+    invers.classList.toggle('chousen-inversing')
+  }
 })
 
 invers.addEventListener('click', function() {
   user.inverting = true;
+  user.tool = "";
+  invers.classList.add('chousen-inversing');
+  if (pisckaxe.classList.contains('chousen-instument')) {
+    pisckaxe.classList.remove('chousen-instument')
+  }
+  if (shovel.classList.contains('chousen-instument')) {
+    shovel.classList.remove('chousen-instument')
+  }
+  if (axe.classList.contains('chousen-instument')) {
+    axe.classList.remove('chousen-instument')
+  }
 })
 
 
@@ -55,6 +97,7 @@ function createMatrix(){
         playBlock.classList.add('dirt');
       }
       field.appendChild(playBlock);
+
       playBlock.addEventListener('click', function(){
         if (user.inverting === false) {
           if ((user.tool === 'pickaxe')&&(playBlock.classList.contains('stone'))) {
@@ -65,7 +108,7 @@ function createMatrix(){
             playBlock.setAttribute('class', 'playItem');
             inversInnerDiv.setAttribute('class', 'dirt');
             invers.appendChild(inversInnerDiv);
-        } else if ((user.tool === 'shovel')&&(playBlock.classList.contains('grass'))) {
+          } else if ((user.tool === 'shovel')&&(playBlock.classList.contains('grass'))) {
             playBlock.setAttribute('class', 'playItem');
             inversInnerDiv.setAttribute('class', 'grass');
             invers.appendChild(inversInnerDiv);
@@ -77,10 +120,22 @@ function createMatrix(){
             playBlock.setAttribute('class', 'playItem');
             inversInnerDiv.setAttribute('class', 'leaves');
             invers.appendChild(inversInnerDiv);
-          } 
+          }
+          // if wrong instrument was choosen 
+          else if (!playBlock.classList.contains('stone') && user.tool == 'pickaxe') {
+            pisckaxe.classList.add('needed-instrument');
+            pisckaxe.classList.remove('needed-instrument');
+          } else if (!playBlock.classList.contains('dirt') && user.tool == 'shovel') {
+            shovel.classList.add('needed-instrument');
+          } else if (!playBlock.classList.contains('grass') && user.tool == 'shovel') {
+            shovel.classList.add('needed-instrument');
+          } else if (!playBlock.classList.contains('oak') && user.tool == 'axe') {
+            axe.classList.add('needed-instrument');
+          } else if (!playBlock.classList.contains('leaves') && user.tool == 'axe') {
+            axe.classList.add('needed-instrument');
+          }
+
         }
-        
-        
         else {
           let innerInversDiv = document.querySelector(".inverting div");
           playBlock.setAttribute('class', innerInversDiv.getAttribute('class'));

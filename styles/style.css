@@ -1,3 +1,9 @@
+@font-face {
+	font-family: "Minecraft 1.1";
+	src: url("../fonst/minecraft-1-1.woff2") format("woff2"); /* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
 * {
     margin: 0;
     padding: 0;
@@ -87,3 +93,57 @@ main {
 .oak {
     background: url(../images/Oak-Log.png);
 }
+.chousen-inversing {
+    border: 3px solid blue;
+}
+.chousen-instument {
+    border: blue;
+    background-color: blue;
+}
+
+@keyframes keyframe {
+    from { background-color: blue;}
+    50% { background-color: red;}
+    to { background-color: blue;}
+  }
+.needed-instrument {
+    transition: keyframe 1s linear;
+}
+.start-page {
+    width: 80vw;
+    height: 100vh;
+    background: url(../images/Dirt.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.start-img-button {
+    width: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.start-img-minecraft {
+    width: 50%;
+    height: 40%;
+    display: block;
+}
+.start-button{
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 2px;
+    color: black;
+    font-family: 'Minecraft 1.1';
+    font-weight: bold;
+}
+
+
+  
+  

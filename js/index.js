@@ -16,21 +16,26 @@ let user = {
 const pisckaxe = document.querySelector('#pickaxe');
 const shovel = document.querySelector('#shovel');
 const axe = document.querySelector('#axe');
+
 const invers = document.querySelector('.inverting');
-invers.setAttribute('material', '');
+const inversInnerDiv = document.createElement("div");
+//invers.setAttribute('material', '');
 
 pisckaxe.addEventListener('click', function(){ 
-  user.tool = "pickaxe"
+  user.tool = "pickaxe";
+  user.inverting = false;
 })
 shovel.addEventListener('click', function(){ 
   user.tool = "shovel"
+  user.inverting = false;
 })
 axe.addEventListener('click', function(){ 
-  user.tool = "axe"
+  user.tool = "axe";
+  user.inverting = false;
 })
 
 invers.addEventListener('click', function() {
-  user.inverting='true';
+  user.inverting = true;
 })
 
 
@@ -42,7 +47,6 @@ function createMatrix(){
     let row = [];
     for (let j=1; j<=20; j++) {
       let playBlock = document.createElement('div');
-  console.log(playBlock);
       playBlock.id = `x${j}y${i}`;
       playBlock.classList.add('playItem');
       if (i===17) {
@@ -52,23 +56,35 @@ function createMatrix(){
       }
       field.appendChild(playBlock);
       playBlock.addEventListener('click', function(){
-        if ((user.tool === 'pickaxe')&&(playBlock.classList.contains('stone'))) {
-          playBlock.setAttribute('class', 'playItem');
-          invers.setAttribute('material', 'stone');
-        } else if ((user.tool === 'shovel')&&(playBlock.classList.contains('dirt'))) {
-          playBlock.setAttribute('class', 'playItem');
-          document.querySelector('.inverting').classList.add('dirt');
+        if (user.inverting === false) {
+          if ((user.tool === 'pickaxe')&&(playBlock.classList.contains('stone'))) {
+            playBlock.setAttribute('class', 'playItem');
+            inversInnerDiv.setAttribute('class', 'stone');
+            invers.appendChild(inversInnerDiv);
+          } else if ((user.tool === 'shovel')&&(playBlock.classList.contains('dirt'))) {
+            playBlock.setAttribute('class', 'playItem');
+            inversInnerDiv.setAttribute('class', 'dirt');
+            invers.appendChild(inversInnerDiv);
         } else if ((user.tool === 'shovel')&&(playBlock.classList.contains('grass'))) {
-          playBlock.setAttribute('class', 'playItem');
-          document.querySelector('.inverting').classList.add('grass');
-        } else if ((user.tool === 'axe')&&(playBlock.classList.contains('oak'))) {
-          playBlock.setAttribute('class', 'playItem');
-          document.querySelector('.inverting').classList.add('oak');
-        }  else if ((user.tool === 'axe')&&(playBlock.classList.contains('leaves'))) {
-          playBlock.setAttribute('class', 'playItem');
-          document.querySelector('.inverting').classList.add('leaves');
-        } else if (user.inverting === true) {
-          
+            playBlock.setAttribute('class', 'playItem');
+            inversInnerDiv.setAttribute('class', 'grass');
+            invers.appendChild(inversInnerDiv);
+          } else if ((user.tool === 'axe')&&(playBlock.classList.contains('oak'))) {
+            playBlock.setAttribute('class', 'playItem');
+            inversInnerDiv.setAttribute('class', 'oak');
+            invers.appendChild(inversInnerDiv);
+          }  else if ((user.tool === 'axe')&&(playBlock.classList.contains('leaves'))) {
+            playBlock.setAttribute('class', 'playItem');
+            inversInnerDiv.setAttribute('class', 'leaves');
+            invers.appendChild(inversInnerDiv);
+          } 
+        }
+        
+        
+        else {
+          let innerInversDiv = document.querySelector(".inverting div");
+          playBlock.setAttribute('class', innerInversDiv.getAttribute('class'));
+          invers.removeChild(innerInversDiv);
         }
       })
       row.push(playBlock);

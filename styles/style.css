@@ -32,9 +32,9 @@ main {
     width: 7vw;
     height: 15vh;
     border: .4vh solid white;
-    padding: .3vh;
     border-radius: 3px;
     margin-bottom: 2vh;
+    overflow: hidden;
 }
 .instrument img {
     width: 100%;
@@ -57,7 +57,8 @@ main {
 .dirt,
 .grass,
 .leaves,
-.cloud
+.cloud,
+.oak
  {
     width: 4vw;
     height: 4.75vh;

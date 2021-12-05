@@ -124,15 +124,29 @@ function createMatrix(){
           // if wrong instrument was choosen 
           else if (!playBlock.classList.contains('stone') && user.tool == 'pickaxe') {
             pisckaxe.classList.add('needed-instrument');
-            pisckaxe.classList.remove('needed-instrument');
+            setTimeout( () => {
+              pisckaxe.classList.remove('needed-instrument');
+            }, 100);
           } else if (!playBlock.classList.contains('dirt') && user.tool == 'shovel') {
             shovel.classList.add('needed-instrument');
+            setTimeout( () => {
+              shovel.classList.remove('needed-instrument');
+            }, 100);
           } else if (!playBlock.classList.contains('grass') && user.tool == 'shovel') {
             shovel.classList.add('needed-instrument');
+            setTimeout( () => {
+              shovel.classList.remove('needed-instrument');
+            }, 100);
           } else if (!playBlock.classList.contains('oak') && user.tool == 'axe') {
             axe.classList.add('needed-instrument');
+            setTimeout( () => {
+              axe.classList.remove('needed-instrument');
+            }, 100);
           } else if (!playBlock.classList.contains('leaves') && user.tool == 'axe') {
             axe.classList.add('needed-instrument');
+            setTimeout( () => {
+              axe.classList.remove('needed-instrument');
+            }, 100);
           }
 
         }

@@ -118,9 +118,11 @@ main {
     50% { background-color: red;}
     to { background-color: blue;}
   }
+*/
 .needed-instrument {
-    transition: keyframe 1s linear;
-} */
+    background-color: red;
+    border: 3px solid red;
+}
 .start-page {
     width: 85vw;
     height: 100vh;
